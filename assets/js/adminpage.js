@@ -85,3 +85,99 @@ userDropdownBtn.addEventListener('click', function() {
         userDropdown.classList.remove('user-menu-show');
     }
 });
+
+var cssLink;
+
+$(document).ready(function () {
+    // Sử dụng sự kiện click cho liên kết "Home"
+    $(".load-target").click(function (e) {
+        e.preventDefault(); // Ngăn chặn mặc định hành vi điều hướng của liên kết
+
+        // Lấy giá trị của thuộc tính myTarget từ liên kết
+        var pageTarget = $(this).attr("href");
+        var cssTarget = $(this).attr("cref");
+        
+        // Kiểm tra giá trị thuộc tính myTarget và thực hiện xử lý tương ứng
+        if (!pageTarget || pageTarget === "#" || pageTarget === "" || cssTarget === "#" || cssTarget === "" || !cssTarget) {
+            return; // Không làm gì cả nếu giá trị thuộc tính là rỗng
+        }
+        else {
+            loadPage(pageTarget, cssTarget);
+        }
+    });
+});
+
+function loadPage(page, css) {
+    if (cssLink) {
+        cssLink.remove();
+    }
+
+    // Sử dụng jQuery's .load() để tải nội dung #main-content
+    $("#main-content").load(page);
+
+    // Kiểm tra xem file css đã được load chưa
+    var listCss = css.split(" ");
+    listCss.forEach(function (item) {
+        checkEsixtCss(item);
+        loadCss(item);
+    });
+}
+
+function checkEsixtCss(css) {
+    var cssLink = document.getElementsByClassName("cssLink");
+    console.log(cssLink);
+    if (cssLink) {
+        for (var i = 0; i < cssLink.length; i++) {
+            console.log(cssLink[i].href + " " + css);
+            if ((cssLink[i].href).includes(removeLeadingDot(css))) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function loadCss(css) {
+    // Tạo một thẻ <link> để thêm file CSS vào phần head
+    var cssLink = document.createElement("link");
+    cssLink.setAttribute("rel", "stylesheet");
+    cssLink.setAttribute("type", "text/css");
+    cssLink.setAttribute("class", "cssLink");
+    cssLink.setAttribute("href", css);
+
+    // Chèn thẻ <link> vào phần head
+    $("head").append(cssLink);
+}
+
+function removeLeadingDot(inputString) {
+    // Kiểm tra xem chuỗi có bắt đầu bằng dấu chấm hay không
+    if (inputString.startsWith(".")) {
+        // Nếu có, loại bỏ dấu chấm ở đầu bằng cách sử dụng slice(1)
+        return inputString.slice(1);
+    } else {
+        // Nếu không, trả về chuỗi ban đầu
+        return inputString;
+    }
+}
+
+// Header nav toggle click
+
+var headerNavBtn = document.getElementById('header-nav-toggle');
+
+headerNavBtn.addEventListener('click', function() {
+    var headerNav = document.getElementById('sidebar');
+    if (!headerNav.classList.contains('sidebar--hidden')){
+        headerNav.classList.add('sidebar--hidden');
+    }
+    else {
+        headerNav.classList.remove('sidebar--hidden');
+    }
+
+    var pageContent = document.getElementById('page-content');
+    if (!pageContent.classList.contains('sidebar--hidden')){
+        pageContent.classList.add('sidebar--hidden');
+    }
+    else {
+        pageContent.classList.remove('sidebar--hidden');
+    }
+});
