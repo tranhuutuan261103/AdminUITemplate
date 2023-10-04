@@ -34,3 +34,18 @@ $(document).ready(function () {
         $(".selected").attr("data-value", selectedValue);
     });
 });
+
+// Pagination
+// var pagination = document.querySelectorAll(".pagination");
+// console.log(pagination);
+
+// var paginationItem = document.querySelectorAll(".page-item");
+
+// paginationItem.forEach(function (item) {
+//     item.addEventListener('click', function () {
+//         paginationItem.forEach(function (item) {
+//             item.classList.remove('page-item--active');
+//         });
+//         item.classList.add('page-item--active');
+//     });
+// });

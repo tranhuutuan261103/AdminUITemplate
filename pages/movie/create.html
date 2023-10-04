@@ -1,0 +1,47 @@
+<nav class="breadcrumb">
+    <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+            <a href="../adminpage.html">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a class="load-target" href="./pages/movie.html" cref="./assets/css/pages/movie.css">Movies</a>
+        </li>
+        <li class="breadcrumb-item">
+            Create
+        </li>
+    </ol>
+</nav>
+
+<form action="">
+    <div class="form-group">
+        <div class="fileCustom">
+            <img class="uploadPreview" src="#" alt="image" id="preview-image" />
+            <input type="file" accept="image/*" class="file-image" name="file" id="file-input">
+        </div>
+    </div>
+
+</form>
+
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/adminpage.js"></script>
+<script type="text/javascript">
+
+    var fileInput = document.getElementById('file-input');
+
+    var previewImage = document.getElementById('preview-image');
+
+    fileInput.addEventListener('change', event => {
+        if (event.target.files.length > 0) {
+            previewImage.src = URL.createObjectURL(
+                event.target.files[0],
+            );
+
+            previewImage.style.display = 'block';
+        }
+
+        // 👇️ reset file input once you're done
+        fileInput.value = null;
+    });
+
+
+</script>
