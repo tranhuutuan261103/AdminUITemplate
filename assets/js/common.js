@@ -1,5 +1,5 @@
 var dropdownBtn = document.querySelectorAll(".dropdown");
-console.log(dropdownBtn);
+// console.log(dropdownBtn);
 
 if (dropdownBtn) {
     dropdownBtn.forEach(function (item) {
@@ -49,3 +49,43 @@ $(document).ready(function () {
 //         item.classList.add('page-item--active');
 //     });
 // });
+
+
+// Reset form
+
+var resetBtn = document.querySelectorAll(".reset-btn");
+console.log(resetBtn);
+
+if (resetBtn) {
+    resetBtn.forEach(function (item) {
+        try {
+            item.addEventListener('click', function () {
+                var form = item.closest('form');
+                form.reset();
+            }
+            );
+        } catch (error) {
+            console.log(error);
+        }
+    });
+}
+
+// Dialog event
+var dialog = document.getElementsByClassName("modal-dialog");
+console.log(dialog);
+
+var dialogCancelBtn = document.querySelectorAll(".cancel-btn");
+
+if (dialogCancelBtn) {
+    dialogCancelBtn.forEach(function (item) {
+        try {
+            item.addEventListener('click', function () {
+                var dialog = item.closest('.modal-dialog');
+                dialog.classList.remove('modal-dialog--active');
+            }
+            );
+        } catch (error) {
+            console.log(error);
+        }
+    });
+}

@@ -7,7 +7,7 @@ var filteredNavItems = Array.from(navItems).filter(function(item) {
 });
 
 // Now, filteredNavItems contains the elements you want
-console.log(filteredNavItems);
+// console.log(filteredNavItems);
 
 filteredNavItems.forEach(function(item) {
     item.addEventListener('click', function() {
@@ -49,8 +49,8 @@ collapsibleElements.forEach(function(collapsible) {
 });
 
 // Now, dropdownBtnElements and navCollapsibleBtnElements contain the elements with parent class "collapsible"
-console.log(dropdownBtnElements);
-console.log(navCollapsibleBtnElements);
+// console.log(dropdownBtnElements);
+// console.log(navCollapsibleBtnElements);
 
 dropdownBtnElements.forEach(function(item) {
     item.addEventListener('click', function() {
@@ -125,10 +125,10 @@ function loadPage(page, css) {
 
 function checkEsixtCss(css) {
     var cssLink = document.getElementsByClassName("cssLink");
-    console.log(cssLink);
+    // console.log(cssLink);
     if (cssLink) {
         for (var i = 0; i < cssLink.length; i++) {
-            console.log(cssLink[i].href + " " + css);
+            // console.log(cssLink[i].href + " " + css);
             if ((cssLink[i].href).includes(removeLeadingDot(css))) {
                 return true;
             }
